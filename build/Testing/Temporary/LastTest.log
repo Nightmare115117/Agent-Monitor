@@ -1,0 +1,57 @@
+Start testing: Sep 23 23:18 CST
+----------------------------------------------------------
+1/2 Testing: RAMReader.ReaderDontThrowException
+1/2 Test: RAMReader.ReaderDontThrowException
+Command: "/home/iron/Proyectos/C++/Agent-monitor/build/tests/agent_monitor_tests" "--gtest_filter=RAMReader.ReaderDontThrowException" "--gtest_also_run_disabled_tests"
+Directory: /home/iron/Proyectos/C++/Agent-monitor/build/tests
+"RAMReader.ReaderDontThrowException" start time: Sep 23 23:18 CST
+Output:
+----------------------------------------------------------
+Running main() from /home/iron/Proyectos/C++/Agent-monitor/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = RAMReader.ReaderDontThrowException
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RAMReader
+[ RUN      ] RAMReader.ReaderDontThrowException
+[       OK ] RAMReader.ReaderDontThrowException (0 ms)
+[----------] 1 test from RAMReader (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"RAMReader.ReaderDontThrowException" end time: Sep 23 23:18 CST
+"RAMReader.ReaderDontThrowException" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/2 Testing: RAMReader.TotalmayorThanCero
+2/2 Test: RAMReader.TotalmayorThanCero
+Command: "/home/iron/Proyectos/C++/Agent-monitor/build/tests/agent_monitor_tests" "--gtest_filter=RAMReader.TotalmayorThanCero" "--gtest_also_run_disabled_tests"
+Directory: /home/iron/Proyectos/C++/Agent-monitor/build/tests
+"RAMReader.TotalmayorThanCero" start time: Sep 23 23:18 CST
+Output:
+----------------------------------------------------------
+Running main() from /home/iron/Proyectos/C++/Agent-monitor/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = RAMReader.TotalmayorThanCero
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RAMReader
+[ RUN      ] RAMReader.TotalmayorThanCero
+[       OK ] RAMReader.TotalmayorThanCero (0 ms)
+[----------] 1 test from RAMReader (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"RAMReader.TotalmayorThanCero" end time: Sep 23 23:18 CST
+"RAMReader.TotalmayorThanCero" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Sep 23 23:18 CST

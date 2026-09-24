@@ -1,0 +1,3 @@
+RAMReader.ReaderDontThrowException 2 0.00205122
+RAMReader.TotalmayorThanCero 2 0.00243634
+---

@@ -1,0 +1,22 @@
+{
+  "tests": 2,
+  "name": "AllTests",
+  "testsuites": [
+    {
+      "name": "RAMReader",
+      "tests": 2,
+      "testsuite": [
+        {
+          "name": "ReaderDontThrowException",
+          "file": "\/home\/iron\/Proyectos\/C++\/Agent-monitor\/tests\/ram_reader_test.cpp",
+          "line": 4
+        },
+        {
+          "name": "TotalmayorThanCero",
+          "file": "\/home\/iron\/Proyectos\/C++\/Agent-monitor\/tests\/ram_reader_test.cpp",
+          "line": 8
+        }
+      ]
+    }
+  ]
+}

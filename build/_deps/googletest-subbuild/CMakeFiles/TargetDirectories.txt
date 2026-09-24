@@ -1,0 +1,3 @@
+/home/iron/Proyectos/C++/Agent-monitor/build/_deps/googletest-subbuild/CMakeFiles/googletest-populate.dir
+/home/iron/Proyectos/C++/Agent-monitor/build/_deps/googletest-subbuild/CMakeFiles/edit_cache.dir
+/home/iron/Proyectos/C++/Agent-monitor/build/_deps/googletest-subbuild/CMakeFiles/rebuild_cache.dir
