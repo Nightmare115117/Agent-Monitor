@@ -1,3 +1,0 @@
-/home/iron/Proyectos/C++/Agent-monitor/build/_deps/crow-subbuild/CMakeFiles/crow-populate.dir
-/home/iron/Proyectos/C++/Agent-monitor/build/_deps/crow-subbuild/CMakeFiles/edit_cache.dir
-/home/iron/Proyectos/C++/Agent-monitor/build/_deps/crow-subbuild/CMakeFiles/rebuild_cache.dir

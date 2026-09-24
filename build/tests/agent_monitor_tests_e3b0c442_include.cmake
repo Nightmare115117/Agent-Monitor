@@ -1,5 +1,0 @@
-if(EXISTS "/home/iron/Proyectos/C++/Agent-monitor/build/tests/agent_monitor_tests_e3b0c442_tests.cmake")
-  include("/home/iron/Proyectos/C++/Agent-monitor/build/tests/agent_monitor_tests_e3b0c442_tests.cmake")
-else()
-  add_test(agent_monitor_tests_NOT_BUILT agent_monitor_tests_NOT_BUILT)
-endif()

@@ -1,7 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/home/iron/Proyectos/C++/Agent-monitor/build/_deps/googletest-subbuild/cmake_install.cmake"
-	],
-	"Parallel" : false
-}
