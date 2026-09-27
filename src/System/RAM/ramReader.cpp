@@ -8,6 +8,24 @@ using namespace std;
 const static float convert = 1024;
 
 RAM RAMReader::reader() {
+    vector<long> datos = file();
+    RAM ram = RAM();
+    ram.setTotal(datos[0]/convert/convert);
+    ram.setAvailable(datos[1]/convert/convert);
+    ram.setCache(datos[2]/convert/convert);
+    ram.setSwapTotal(datos[3]/convert/convert);
+    ram.setSwapUsed((datos[3] - datos[4])/convert/convert);
+
+    return ram;
+}
+
+long RAMReader::section(const string& linea) {
+    int pos = linea.find(":");
+    int num = linea.find_first_not_of(" ", pos+1);
+    return stol(linea.substr(num, linea.substr(num).length()-3));
+}
+
+vector<long> RAMReader::file() {
     ifstream archivo("/proc/meminfo");
 
     if (!archivo)
@@ -55,18 +73,14 @@ RAM RAMReader::reader() {
     if (datos.size() < 5)
         throw runtime_error("No se pudieron recolectar los datos necesarios");
 
-    RAM ram = RAM();
+    return datos;
+}
+
+void RAMReader::updater(RAM& ram) {
+    vector<long> datos = file();
     ram.setTotal(datos[0]/convert/convert);
     ram.setAvailable(datos[1]/convert/convert);
     ram.setCache(datos[2]/convert/convert);
     ram.setSwapTotal(datos[3]/convert/convert);
     ram.setSwapUsed((datos[3] - datos[4])/convert/convert);
-
-    return ram;
-}
-
-long RAMReader::section(const string& linea) {
-    int pos = linea.find(":");
-    int num = linea.find_first_not_of(" ", pos+1);
-    return stol(linea.substr(num, linea.substr(num).length()-3));
 }
