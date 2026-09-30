@@ -1,4 +1,4 @@
-#include "ramReader.hpp"
+#include "RamReader.hpp"
 #include <fstream>
 #include <string>
 #include <vector>

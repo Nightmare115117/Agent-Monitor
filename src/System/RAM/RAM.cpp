@@ -1,4 +1,4 @@
-#include "ram.hpp"
+#include "RAM.hpp"
 
 RAM::RAM() : total(0.0f), cache(0.0f), available(0.0f), swap_total(0.0f), swap_used(0.0f) {}
 
