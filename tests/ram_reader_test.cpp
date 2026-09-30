@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "System/RAM/ramReader.hpp"
+#include "System/RAM/RamReader.hpp"
 
 using namespace std;
 
