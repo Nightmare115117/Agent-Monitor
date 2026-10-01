@@ -1,0 +1,80 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure CMake
+        run: cmake -S . -B build -DBUILD_TESTS=ON
+
+      - name: Build
+        run: cmake --build build --parallel
+
+      - name: Run unit tests
+        run: ctest --test-dir build --output-on-failure
+
+      - name: Upload executable
+        uses: actions/upload-artifact@v4
+        with:
+          name: agent-monitor
+          path: build/agent_monitor
+          if-no-files-found: error
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download executable
+        uses: actions/download-artifact@v4
+        with:
+          name: agent-monitor
+
+      - name: Configure SSH
+        uses: webfactory/ssh-agent@v0.9.1
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+
+      - name: Add server to known hosts
+        env:
+          SERVER_IP: ${{ vars.SSH_SERVER_IP }}
+          SSH_KNOWN_HOSTS: ${{ vars.SSH_KNOWN_HOSTS }}
+        run: |
+          test -n "$SERVER_IP"
+          test -n "$SSH_KNOWN_HOSTS"
+          mkdir -p ~/.ssh
+          printf '%s\n' "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+      - name: Deploy native executable
+        env:
+          SERVER_IP: ${{ vars.SSH_SERVER_IP }}
+          SERVER_USER: ${{ vars.SSH_USER }}
+          DEPLOY_PATH: ${{ vars.DEPLOY_PATH || '/opt/agent-monitor/agent_monitor' }}
+          SERVICE_NAME: ${{ vars.SERVICE_NAME || 'agent-monitor' }}
+        run: |
+          test -n "$SERVER_IP"
+          test -n "$SERVER_USER"
+          test -n "$DEPLOY_PATH"
+          test -n "$SERVICE_NAME"
+
+          remote_tmp="/tmp/agent_monitor-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          scp agent_monitor "$SERVER_USER@$SERVER_IP:$remote_tmp"
+          ssh "$SERVER_USER@$SERVER_IP" \
+            "sudo install -D -m 0755 '$remote_tmp' '$DEPLOY_PATH' && \
+            rm -f '$remote_tmp' && \
+            sudo systemctl restart '$SERVICE_NAME' && \
+            sudo systemctl is-active --quiet '$SERVICE_NAME'"

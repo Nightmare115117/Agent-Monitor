@@ -12,7 +12,7 @@ class Disk {
 public:
     Disk();
 
-    const std::string& getDevice();
+    const std::string& getDevice() const;
     void setDevice(const std::string& device); 
 
     float getUsage() const;
