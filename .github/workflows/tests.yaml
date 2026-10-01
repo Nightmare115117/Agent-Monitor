@@ -1,21 +1,32 @@
 name: Unit tests
 
 on:
-	pull_request:
+  pull_request:
 
 jobs:
-	test:
-		runs-on: ubuntu-latest
+  test:
+    runs-on: ubuntu-latest
 
-		steps:
-			- name: Checkout repository
-				uses: actions/checkout@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-			- name: Configure CMake
-				run: cmake -S . -B build -DBUILD_TESTS=ON
+      - name: Install Asio
+        run: sudo apt-get update && sudo apt-get install --yes libasio-dev
 
-			- name: Build
-				run: cmake --build build --parallel
+      - name: Cache CMake dependencies
+        uses: actions/cache@v4
+        with:
+          path: build/_deps
+          key: ${{ runner.os }}-cmake-deps-${{ hashFiles('CMakeLists.txt', 'tests/CMakeLists.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-cmake-deps-
 
-			- name: Run unit tests
-				run: ctest --test-dir build --output-on-failure
+      - name: Configure CMake
+        run: cmake -S . -B build -DBUILD_TESTS=ON
+
+      - name: Build
+        run: cmake --build build --parallel
+
+      - name: Run unit tests
+        run: ctest --test-dir build --output-on-failure
