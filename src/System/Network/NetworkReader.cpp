@@ -68,9 +68,6 @@ vector<string> NetworkReader::file() {
             datos.insert(datos.end(), values.begin(), values.end());
     }
 
-    if (datos.empty())
-        throw runtime_error("No se pudieron recolectar los datos necesarios");
-
     return datos;
 }
 
