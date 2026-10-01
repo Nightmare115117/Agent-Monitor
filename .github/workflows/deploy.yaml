@@ -16,6 +16,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install Asio
+        run: sudo apt-get update && sudo apt-get install --yes libasio-dev
+
       - name: Configure CMake
         run: cmake -S . -B build -DBUILD_TESTS=ON
 
