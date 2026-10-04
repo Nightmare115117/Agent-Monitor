@@ -11,6 +11,4 @@ class RAMReader {
 public: 
 
     static RAM reader();
-    static void updater(RAM& ram);
-
 };

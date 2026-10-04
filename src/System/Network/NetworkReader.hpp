@@ -14,6 +14,5 @@ public:
 
     static float bytesToMegabytes(float bytes);
     static std::vector<Network> reader();
-    static void updater(std::vector<Network>& read);
 
 };
