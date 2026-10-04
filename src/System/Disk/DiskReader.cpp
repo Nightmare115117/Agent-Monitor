@@ -171,7 +171,3 @@ Disk DiskReader::reader() {
     }
     return all.front();
 }
-
-void DiskReader::update(Disk& disco) {
-    disco = reader();
-}

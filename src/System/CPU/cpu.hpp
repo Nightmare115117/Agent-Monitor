@@ -15,3 +15,16 @@ struct CPUInfo {
 struct CPUMetrics {
 	std::optional<double> usagePercent;
 };
+
+class CPU {
+public:
+	CPU() = default;
+	CPU(CPUInfo info, CPUMetrics metrics);
+
+	const CPUInfo& getInfo() const noexcept;
+	const CPUMetrics& getMetrics() const noexcept;
+
+private:
+	CPUInfo info_;
+	CPUMetrics metrics_;
+};

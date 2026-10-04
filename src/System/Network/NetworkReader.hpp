@@ -9,10 +9,9 @@ class NetworkReader {
     
     static std::vector<std::string> section(const std::string& linea);
     static std::vector<std::string> file();
+    static float bytesToMegabytes(float bytes);
 
 public: 
-
-    static float bytesToMegabytes(float bytes);
     static std::vector<Network> reader();
 
 };

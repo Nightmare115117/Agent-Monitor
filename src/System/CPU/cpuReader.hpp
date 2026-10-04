@@ -3,6 +3,7 @@
 #include "cpu.hpp"
 
 #include <cstdint>
+#include <mutex>
 #include <optional>
 #include <string_view>
 
@@ -22,8 +23,11 @@ struct CPUStatSample {
 
 class CPUReader {
 public:
-	CPUInfo readStaticInfo() const;
-	CPUMetrics readMetrics();
+	CPUReader() = delete;
+
+	static CPU readCPU();
+	static CPUInfo readStaticInfo();
+	static CPUMetrics readMetrics();
 
 	static CPUStatSample parseProcStat(std::string_view contents);
 	static CPUInfo parseProcCpuInfo(std::string_view contents);
@@ -32,5 +36,6 @@ public:
 		const CPUStatSample& current);
 
 private:
-	std::optional<CPUStatSample> previousSample_;
+	inline static std::mutex sampleMutex_;
+	inline static std::optional<CPUStatSample> previousSample_;
 };
