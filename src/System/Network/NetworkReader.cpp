@@ -70,7 +70,3 @@ vector<string> NetworkReader::file() {
 
     return datos;
 }
-
-void NetworkReader::updater(vector<Network>& networks) {
-    networks = reader();
-}
