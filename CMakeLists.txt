@@ -17,6 +17,14 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(Crow)
 
+FetchContent_Declare(
+    json
+    GIT_REPOSITORY https://github.com/nlohmann/json.git
+    GIT_TAG v3.12.0
+)
+
+FetchContent_MakeAvailable(json)
+
 find_package(Threads REQUIRED)
 
 # Toda la lógica de lectura (CPU, Disk, Network, RAM) va en una librería.
@@ -25,12 +33,12 @@ file(GLOB_RECURSE SYSTEM_SOURCES CONFIGURE_DEPENDS "src/System/*.cpp")
 
 add_library(system_lib STATIC ${SYSTEM_SOURCES})
 target_include_directories(system_lib PUBLIC src)
-# Si los módulos de System no usan Crow, mueve Crow::Crow al ejecutable.
-target_link_libraries(system_lib PUBLIC
-    Crow::Crow
-    Threads::Threads)
 
 add_executable(agent_monitor src/main.cpp)
+target_link_libraries(agent_monitor PRIVATE
+    Crow::Crow
+    Threads::Threads
+    nlohmann_json::nlohmann_json)
 target_link_libraries(agent_monitor PRIVATE system_lib)
 
 if(BUILD_TESTS)

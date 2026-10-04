@@ -8,7 +8,6 @@ class DiskReader {
 public:
     static Disk reader();                       // disco de "/"
     static std::vector<Disk> readAll(std::string* rootDisk = nullptr);
-    static void update(Disk& disco);
 
 private:
     static struct statvfs datos;

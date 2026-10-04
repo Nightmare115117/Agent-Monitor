@@ -31,9 +31,3 @@ TEST(RAMReader, SWAPLETotal) {
     RAM ram = RAMReader::reader();
     EXPECT_LE(ram.getSwapUsed(), ram.getSwapTotal());
 }
-
-TEST(RAMReader, TotalmayorThanCeroUpdater) {
-    RAM ram = RAMReader::reader();
-    RAMReader::updater(ram);
-    EXPECT_GT(ram.getTotal(), 0);
-}

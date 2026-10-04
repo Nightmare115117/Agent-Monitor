@@ -11,9 +11,6 @@ class NetworkReader {
     static std::vector<std::string> file();
 
 public: 
-
-    static float bytesToMegabytes(float bytes);
     static std::vector<Network> reader();
-    static void updater(std::vector<Network>& read);
-
+    static float bytesToMegabytes(float bytes);
 };

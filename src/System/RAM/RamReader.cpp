@@ -75,12 +75,3 @@ vector<long> RAMReader::file() {
 
     return datos;
 }
-
-void RAMReader::updater(RAM& ram) {
-    vector<long> datos = file();
-    ram.setTotal(datos[0]/convert/convert);
-    ram.setAvailable(datos[1]/convert/convert);
-    ram.setCache(datos[2]/convert/convert);
-    ram.setSwapTotal(datos[3]/convert/convert);
-    ram.setSwapUsed((datos[3] - datos[4])/convert/convert);
-}

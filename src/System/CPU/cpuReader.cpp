@@ -140,7 +140,7 @@ CPUInfo CPUReader::parseProcCpuInfo(std::string_view contents) {
 	return info;
 }
 
-CPUInfo CPUReader::readStaticInfo() const {
+CPUInfo CPUReader::readStaticInfo() {
 	auto info = parseProcCpuInfo(readFile("/proc/cpuinfo"));
 
 	struct utsname systemInfo {};
@@ -149,6 +149,10 @@ CPUInfo CPUReader::readStaticInfo() const {
 	}
 	info.architecture = systemInfo.machine;
 	return info;
+}
+
+CPU CPUReader::readCPU() {
+	return CPU(readStaticInfo(), readMetrics());
 }
 
 std::optional<double> CPUReader::calculateUsage(
@@ -174,6 +178,7 @@ std::optional<double> CPUReader::calculateUsage(
 CPUMetrics CPUReader::readMetrics() {
 	const auto current = parseProcStat(readFile("/proc/stat"));
 	CPUMetrics metrics;
+	std::lock_guard lock(sampleMutex_);
 	if (previousSample_) {
 		metrics.usagePercent = calculateUsage(*previousSample_, current);
 	}
