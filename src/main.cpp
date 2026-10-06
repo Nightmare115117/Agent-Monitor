@@ -86,7 +86,7 @@ json parser() {
     datos["used"] = disco.getUsed();
     datos["usage"] = disco.getUsage();
     datos["usageP"] = disco.getUsageP();
-    dto["disck"] = datos;
+    dto["disk"] = datos;
     datos.clear();
     if (!datos.empty())
         throw runtime_error("No se pudo limpiar");

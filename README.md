@@ -57,7 +57,7 @@ metrics
 {
   "CPU": { "usage": 12.5 },
   "ram": { "total": 16384, "available": 9012, "cache": 2400, "swapTotal": 0, "swapUsed": 0 },
-  "disck": { "device": "/", "free": 123456, "used": 45678, "usage": 27.3, "usageP": 27.3 },
+  "disk": { "device": "/", "free": 123456, "used": 45678, "usage": 27.3, "usageP": 27.3 },
   "red": {
     "enp0s3": { "recived": 154321, "recivedPackets": 1200, "transmitted": 97000, "trasmittedPackets": 840 }
   }
@@ -141,7 +141,7 @@ metrics
 {
   "CPU": { "usage": 12.5 },
   "ram": { "total": 16384, "available": 9012, "cache": 2400, "swapTotal": 0, "swapUsed": 0 },
-  "disck": { "device": "/", "free": 123456, "used": 45678, "usage": 27.3, "usageP": 27.3 },
+  "disk": { "device": "/", "free": 123456, "used": 45678, "usage": 27.3, "usageP": 27.3 },
   "red": {
     "enp0s3": { "recived": 154321, "recivedPackets": 1200, "transmitted": 97000, "trasmittedPackets": 840 }
   }
